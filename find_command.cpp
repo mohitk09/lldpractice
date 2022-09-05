@@ -67,3 +67,8 @@ class FindCommand{
             }
         }
 };
+
+int main(){
+    FindCommand f;
+    f.findWithFilters({}, { 2});
+}
