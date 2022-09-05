@@ -10,19 +10,19 @@ file class{
 */
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct File{
     string name;
     int size;
-    string content;
     bool isDirectory;
-    File* children[];
+    vector<File> children;
 };
 
 class Filter{
     public:
-        virtual bool apply(File* file) = 0;
+        virtual bool apply(File file) = 0;
 };
 
 class MinSizeFilter : Filter{
@@ -31,11 +31,39 @@ class MinSizeFilter : Filter{
     MinSizeFilter(int minSize){
         minSize = minSize;
     }
-    bool apply(File* file){
-        return file->size > minSize;
+    bool apply(File file){
+        return file.size > minSize;
     }
 };
 
 class FindCommand{
-    
+    public:
+       vector<File*> findWithFilters(File directory, vector<MinSizeFilter> filters){
+            if(!directory.isDirectory){
+                throw std::invalid_argument("Invalid argument passed");
+            }
+            vector<File> output;
+            findWithFilters(directory, filters, output);
+       }
+    private:
+        void findWithFilters(File directory, vector<MinSizeFilter> filters, vector<File> output){
+            if(!directory.children.size()){
+                return;
+            }
+            for(File file: directory.children){
+                if(file.isDirectory){
+                    findWithFilters(file, filters, output);
+                }else{
+                    bool isSelectedFile = true;
+                    for(MinSizeFilter filter : filters){
+                        if(!filter.apply(file)){
+                            isSelectedFile = false;
+                        }
+                    }
+                    if(isSelectedFile){
+                        output.push_back(file);
+                    }
+                }
+            }
+        }
 };
