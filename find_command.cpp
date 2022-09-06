@@ -29,10 +29,10 @@ class MinSizeFilter : Filter{
   int minSize;
   public:
     MinSizeFilter(int minSize){
-        minSize = minSize;
+        this->minSize = minSize;
     }
     bool apply(File file){
-        return file.size > minSize;
+        return file.size > this->minSize;
     }
 };
 
@@ -63,6 +63,7 @@ class FindCommand{
                         }
                     }
                     if(isSelectedFile){
+                        cout<<"file selected "<<file.name<<endl;
                         output.push_back(file);
                     }
                 }
@@ -72,12 +73,23 @@ class FindCommand{
 
 int main(){
     FindCommand f;
-    File file;
-    file.name = "Mohit";
-    file.isDirectory = true;
-    file.size = 2;
     MinSizeFilter mn(5);
+    
+    File file;
+    file.name = "Mark";
+    file.size = 10;
+    file.isDirectory = false;
+    
+    File directory;
+    vector<File> children;
+    children.push_back(file);
+    directory.name = "Mohit";
+    directory.isDirectory = true;
+    directory.size = 100;
+    directory.children = children;
+    
+    
     vector<MinSizeFilter> temp;
     temp.push_back(mn);
-    f.findWithFilters(file, temp);
+    f.findWithFilters(directory, temp);
 }
