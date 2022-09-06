@@ -38,12 +38,14 @@ class MinSizeFilter : Filter{
 
 class FindCommand{
     public:
-       vector<File*> findWithFilters(File directory, vector<MinSizeFilter> filters){
+       vector<File> findWithFilters(File directory, vector<MinSizeFilter> filters){
+            cout<<"bname "<<directory.name<<endl;
             if(!directory.isDirectory){
                 throw std::invalid_argument("Invalid argument passed");
             }
             vector<File> output;
             findWithFilters(directory, filters, output);
+            return output;
        }
     private:
         void findWithFilters(File directory, vector<MinSizeFilter> filters, vector<File> output){
@@ -70,5 +72,12 @@ class FindCommand{
 
 int main(){
     FindCommand f;
-    f.findWithFilters({}, { 2});
+    File file;
+    file.name = "Mohit";
+    file.isDirectory = true;
+    file.size = 2;
+    MinSizeFilter mn(5);
+    vector<MinSizeFilter> temp;
+    temp.push_back(mn);
+    f.findWithFilters(file, temp);
 }
