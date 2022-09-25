@@ -16,7 +16,7 @@ struct Book{
 
 class BookFilter{
     public:
-        virtual bool apply(Book) = 0;
+        virtual bool apply(Book book) = 0;
 };
 
 class TitleFilter : BookFilter{
