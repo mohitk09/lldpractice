@@ -17,7 +17,22 @@ Parking lot LLD
 */
 
 #include<iostream>
+#include<set>
 using namespace std;
+
+
+typedef enum{
+    CAR,
+    MOTORBIKE,
+    TRUCK
+    
+} VechileType;
+
+typedef enum{
+    COMPACT,
+    MOTORBIKE,
+    LARGE,
+} ParkingSpotType;
 
 // abstract class
 class EntryPoint{
@@ -59,3 +74,46 @@ class PaymentInterface{
 
 // Decorator pattern for entry, exit points access points
 // new Entry(new Exit(new AP())) // access point with both entry and exit points
+
+
+class ParkingSpot{
+    private:
+        int id;
+        bool availability;
+        ParkingSpotType type; 
+    public:
+        ParkingSpot(ParkingSpotType type){
+            this->type = type;            
+        } 
+        bool isParkingSpotFree(){
+            return availability;
+        }
+        void assignVechile(){
+            
+        }
+        void removeVechile(){
+            
+        }
+};
+
+class CompactSpot : ParkingSpot{
+    public:
+        CompactSpot() :  ParkingSpot(MOTORBIKE){
+            
+        }
+};
+
+class ParkingFloor{
+    private:
+        string name;
+        string id;
+        set<ParkingSpot> spots;
+    public:
+        void addParkingSpot(ParkingSpot spot){
+            spots.insert(spot);
+        }
+        void assignVechileToSpot(){
+            
+        }
+         
+};

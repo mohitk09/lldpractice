@@ -32,6 +32,9 @@ class DLL{
     string val;
     DLL* next;
     DLL* prev;
+    DLL(){
+        
+    }
     DLL(int k, int v){
         key = k;
         val = v;
@@ -49,6 +52,9 @@ class Storage{
         int capacity;
     public:
         unordered_map<string, string> store;
+        Storage(){
+            
+        }
         Storage(int capcity){
             this->capacity = capacity;
         }
@@ -73,6 +79,8 @@ class LRUEvictionPolicy{
     DLL dll;
     unordered_map<string, DLL*> mapper;
   public:
+    LRUEvictionPolicy(){
+    }
     void evictKey(string key){
         dll.detatchNode(mapper[key]);
         return; 
