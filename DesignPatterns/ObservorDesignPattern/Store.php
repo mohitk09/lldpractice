@@ -11,8 +11,8 @@ class Store
     {
         $wheyProteinObservable = new WheyProtein();
 
-        $observer1 = new EmailNotificationAlterObserver('xyz@gmail.com');
-        $observer2 = new EmailNotificationAlterObserver('abc@gmail.com');
+        $observer1 = new EmailNotificationAlterObserver('xyz@gmail.com', $wheyProteinObservable);
+        $observer2 = new EmailNotificationAlterObserver('abc@gmail.com', $wheyProteinObservable);
 
         $wheyProteinObservable->add($observer1);
         $wheyProteinObservable->add($observer2);
