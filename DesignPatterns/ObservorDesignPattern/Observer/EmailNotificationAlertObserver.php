@@ -2,8 +2,6 @@
 
 namespace Observer;
 
-use Observable\StockObservable;
-
 class EmailNotificationAlterObserver implements NotificationAlertObserver
 {
 
