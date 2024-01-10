@@ -25,7 +25,6 @@ class User
         array_push($vechiles, $v);
     }
 
-
     /**
      * @return array<Vehicle> 
      */

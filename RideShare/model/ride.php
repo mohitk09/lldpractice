@@ -41,4 +41,9 @@ class Ride
     {
         return $this->vechile;
     }
+
+    public function getRideDuration()
+    {
+        return $this->ride_duration;
+    }
 }
