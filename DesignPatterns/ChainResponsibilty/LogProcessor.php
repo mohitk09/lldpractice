@@ -22,3 +22,5 @@ abstract class LogProcessor
         }
     }
 }
+
+// info->debug->error
