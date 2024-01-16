@@ -51,4 +51,13 @@ class Inventory
         }
         throw new Exception('Invalid code');
     }
+
+    public function updateSoldItem(int $code): void
+    {
+        foreach ($this->inventory as $itemShelf) {
+            if ($itemShelf->code == $code) {
+                $itemShelf->isAvailable = false;
+            }
+        }
+    }
 }

@@ -16,7 +16,7 @@ class Dispense implements State
     {
         print_r('dispensing product');
         $item = $machine->inventory->getItem($codeNumber);
-        // update sold out item
+        $machine->inventory->updateSoldItem($codeNumber);
         $machine->state = new IdleState($machine);
         return $item;
     }
