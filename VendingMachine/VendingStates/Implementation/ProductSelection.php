@@ -23,7 +23,7 @@ class ProductSelection implements State
             if ($amount_paid > $item->getCost()) {
                 $this->getChange($amount_paid - $item->getCost());
             }
-            $machine->state = new Dispense();
+            $machine->state = new Dispense($machine, $codeNumber);
         }
     }
 }
