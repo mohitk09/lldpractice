@@ -22,5 +22,15 @@ class Main
 
         // trivial stuff
         $remote->undo();
+
+        /*
+            Client ----> Invoker(i.e. Remote Control) -> has ICommand(interface)
+                                                          |         |    
+                                                          |         |     
+                                                        Concrete    Another          some other............ 
+                                                        class       Concrete class
+                                                        |
+                                                        has receiver(i.e. Ac obj)
+        */
     }
 }
