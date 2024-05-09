@@ -1,6 +1,6 @@
 <?php
 
-class Cell
+class Cell implements CellInterface
 {
     private int $value;
 
@@ -14,7 +14,7 @@ class Cell
         return $this->value;
     }
 
-    public function setValue($value)
+    public function setValue(int $value): void
     {
         $this->value = $value;
     }
