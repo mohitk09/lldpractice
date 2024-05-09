@@ -46,6 +46,15 @@ class GameService
 
     private function movePlayer(Player $player, int $positions): void
     {
+        $old_position = $this->board->getPlayingPieces()[$player->getID()];
+
+        $new_position = $old_position + $positions;
+
+        if ($new_position > $this->board->getSize()) {
+            $new_position = $old_position;
+        }
+
+        $new_position = $this->computeNewPosition($new_position);
     }
 
     public function startGame()
@@ -54,6 +63,9 @@ class GameService
             $dice_value = DiceService::rollDice();
             $current_player = $this->players->top();
             $this->players->pop();
+            $this->movePlayer($current_player, $dice_value);
+
+            // check is player has won, if not push in the queue again
         }
     }
 }

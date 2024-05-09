@@ -23,6 +23,11 @@ class Board
         $this->snakes = array();
     }
 
+    public function getSize()
+    {
+        return $this->size;
+    }
+
     public function getSnakes()
     {
         return $this->snakes;
@@ -31,5 +36,10 @@ class Board
     public function getLadders()
     {
         return $this->ladders;
+    }
+
+    public function getPlayingPieces()
+    {
+        return $this->player_pieces;
     }
 }
