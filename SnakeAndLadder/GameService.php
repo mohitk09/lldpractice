@@ -43,4 +43,17 @@ class GameService
 
         return $new_position;
     }
+
+    private function movePlayer(Player $player, int $positions): void
+    {
+    }
+
+    public function startGame()
+    {
+        while (!$this->is_game_completed) {
+            $dice_value = DiceService::rollDice();
+            $current_player = $this->players->top();
+            $this->players->pop();
+        }
+    }
 }
