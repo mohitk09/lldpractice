@@ -75,7 +75,7 @@ class Board
         $col = $emptyCell[1];
 
         for ($num = 1; $num <= $this->size; $num++) {
-            if ($this->findEmptyCell($row, $col)) {
+            if ($this->isSafeMove($row, $col, $num)) {
                 $this->grid[$row][$col]->setValue($num);
 
                 if ($this->solve()) {
